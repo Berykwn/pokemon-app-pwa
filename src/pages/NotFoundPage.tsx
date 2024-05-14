@@ -1,6 +1,9 @@
-const NotFoundPage = () => {
-    return (
-      <section className="bg-white dark:bg-gray-900 ">
+import React from "react";
+
+const NotFoundPage: React.FC = () => {
+  return (
+    <React.Fragment>
+      <div className="bg-white dark:bg-gray-900">
         <div className="container flex items-center min-h-screen px-6 py-12 mx-auto">
           <div className="flex flex-col items-center max-w-sm mx-auto text-center">
             <h1 className="mt-3 text-2xl font-semibold text-gray-800 dark:text-white md:text-3xl">
@@ -12,9 +15,9 @@ const NotFoundPage = () => {
             </p>
           </div>
         </div>
-      </section>
-    );
-  };
-  
-  export default NotFoundPage;
-  
+      </div>
+    </React.Fragment>
+  );
+};
+
+export default NotFoundPage;
