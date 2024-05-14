@@ -63,7 +63,7 @@ const Home = () => {
                 )}
                 {!loading && (
                   <img
-                    alt={pokemon.name}
+                    alt={`image-${pokemon.name}`}
                     src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${
                       index + 1
                     }.svg`}

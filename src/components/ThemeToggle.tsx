@@ -52,7 +52,7 @@ const ThemeToggle: React.FC = () => {
   };
   return (
     <div>
-      <button onClick={handleClick}>
+      <button onClick={handleClick} aria-label="Toggle Theme">
         {appTheme ? <IconMoon /> : <IconSun />}
       </button>
     </div>

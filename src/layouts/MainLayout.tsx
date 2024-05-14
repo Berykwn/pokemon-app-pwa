@@ -20,7 +20,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     >
       <header className="bg-slate-950 py-4 px-4 sticky top-0 z-10 h-16">
         <nav className="flex justify-between items-center">
-          <Link to="/" className="text-2xl text-neutral-400">
+          <Link to="/" className="text-2xl text-neutral-100">
             Poke~mon
           </Link>
           <ThemeToggle />
@@ -33,7 +33,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         <Link
           to="/"
           className={`px-4 py-2 text-lg ${
-            location.pathname === "/" ? "text-neutral-100" : "text-neutral-500"
+            location.pathname === "/" ? "text-neutral-100" : "text-neutral-400"
           }`}
         >
           Home
@@ -43,7 +43,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
           className={`px-4 py-2 text-lg ${
             location.pathname === "/my-pokemons"
               ? "text-neutral-100"
-              : "text-neutral-500"
+              : "text-neutral-400"
           }`}
         >
           My Pokemon
