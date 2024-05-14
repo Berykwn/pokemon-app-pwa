@@ -41,7 +41,8 @@ const Catch = () => {
   const memoizedPokemonData = useMemo(() => pokemonData, [pokemonData]);
 
   const handleCatchClick = () => {
-    const number = Math.floor(Math.random() * 51) + 50;
+    const number = Math.floor(Math.random() * 101);
+    console.log(number)
 
     setCountPokemonCatch(number);
     setShowModal(true);
@@ -51,7 +52,9 @@ const Catch = () => {
     setShowModal(false);
   };
 
-  const handleCatchPokemonSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleCatchPokemonSubmit = (
+    event: React.FormEvent<HTMLFormElement>
+  ) => {
     event.preventDefault();
 
     const nickname = (event.target as HTMLFormElement).nickname.value.trim();

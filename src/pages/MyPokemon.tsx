@@ -2,9 +2,22 @@ import { useEffect, useState } from "react";
 import MainLayout from "../layouts/MainLayout";
 import { Link } from "react-router-dom";
 
-const MyPokemon = () => {
-  const [myPokemonList, setMyPokemonList] = useState([]);
+interface PokemonItem {
+  pokemon: {
+    name: string;
+    sprites: {
+      other: {
+        dream_world: {
+          front_default: string;
+        };
+      };
+    };
+  };
+  nickname: string;
+}
 
+const MyPokemon = () => {
+  const [myPokemonList, setMyPokemonList] = useState<PokemonItem[]>([]);
   useEffect(() => {
     const pokemons = localStorage.getItem("myPokemon");
     if (pokemons) {
@@ -12,7 +25,7 @@ const MyPokemon = () => {
     }
   }, []);
 
-  const handleDeletePokemon = (index) => {
+  const handleDeletePokemon = (index: number) => {
     const pokemons = [...myPokemonList];
 
     pokemons.splice(index, 1);
