@@ -35,7 +35,7 @@ const MyPokemon = () => {
     localStorage.setItem("myPokemon", JSON.stringify(pokemons));
   };
 
-  console.log(myPokemonList);
+  console.log("uhuy", myPokemonList);
 
   return (
     <MainLayout>

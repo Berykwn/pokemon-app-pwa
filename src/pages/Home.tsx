@@ -2,8 +2,22 @@ import { useState, useEffect } from "react";
 import MainLayout from "../layouts/MainLayout";
 import { Link } from "react-router-dom";
 
+import reactLogo from "../assets/loading.svg";
+
+interface PokemonItem {
+  name: string;
+}
+
+interface PokemonResponse {
+  results: PokemonItem[];
+}
+
 const Home = () => {
-  const [pokemonData, setPokemonData] = useState<any[]>([]);
+  const [pokemonData, setPokemonData] = useState<PokemonResponse>({
+    results: [],
+  });
+
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     fetchData();
@@ -16,47 +30,57 @@ const Home = () => {
         throw new Error("Failed to fetch data");
       }
       const data = await response.json();
-      console.log(data);
-      setPokemonData(data.results);
+      setPokemonData(data);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
+      setLoading(false);
     }
   };
 
   return (
     <MainLayout>
-      <div className="grid grid-flow-row auto-rows-max grid-cols-2 gap-3 p-6">
-        {pokemonData.map((pokemon: any, index: number) => (
-          <div
+      <section className="grid grid-flow-row auto-rows-max grid-cols-2 gap-3 p-6">
+        {pokemonData.results?.map((pokemon: PokemonItem, index: number) => (
+          <article
             key={index}
-            className="flex h-full flex-col rounded-2xl border-4 border-black shadow-lg shadow-black dark:border-white"
+            className="flex flex-col rounded-xl border-4 border-black shadow-lg dark:border-white min-w-24 min-h-24"
           >
             <Link
               className="flex h-full flex-col items-center justify-between"
               to={`/pokemon/${pokemon.name}`}
             >
-              <div className="flex h-full w-full items-center justify-center">
-                <img
-                  alt={pokemon.name}
-                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${
-                    index + 1
-                  }.svg`}
-                  width="170"
-                  height="200"
-                  decoding="async"
-                  data-nimg="1"
-                  className="h-auto w-auto"
-                  loading="lazy"
-                  style={{ color: "transparent" }}
-                />
-              </div>
-              <p className="w-full rounded-b-lg bg-black py-2 text-center text-lg font-bold uppercase tracking-widest text-white dark:rounded-b-xl">
+              <figure className="flex justify-center aspect-w-4 aspect-h-5 w-full">
+                {loading && (
+                  <img
+                    alt="loading"
+                    src={reactLogo}
+                    className="object-cover text-center py-3"
+                    width={"150px"}
+                    height={"150px"}
+                    loading="lazy"
+                  />
+                )}
+                {!loading && (
+                  <img
+                    alt={pokemon.name}
+                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${
+                      index + 1
+                    }.svg`}
+                    className="object-cover text-center py-2"
+                    width={"150px"}
+                    height={"150px"}
+                    loading="lazy"
+                  />
+                )}
+              </figure>
+              <figcaption className="w-full rounded-b-lg bg-black py-2 text-center text-lg font-bold uppercase tracking-widest text-white dark:rounded-b-xl">
                 {pokemon.name}
-              </p>
+              </figcaption>
             </Link>
-          </div>
+          </article>
         ))}
-      </div>
+      </section>
     </MainLayout>
   );
 };
