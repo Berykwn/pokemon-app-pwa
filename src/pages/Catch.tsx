@@ -42,7 +42,7 @@ const Catch = () => {
 
   const handleCatchClick = () => {
     const number = Math.floor(Math.random() * 101);
-    console.log(number)
+    console.log(number);
 
     setCountPokemonCatch(number);
     setShowModal(true);
@@ -106,8 +106,6 @@ const Catch = () => {
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${memoizedPokemonData.id}.svg`}
             width="200"
             height="200"
-            decoding="async"
-            data-nimg="1"
             loading="lazy"
             className="place-self-center self-end"
           />

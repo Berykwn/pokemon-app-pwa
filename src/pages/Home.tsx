@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import MainLayout from "../layouts/MainLayout";
 import { Link } from "react-router-dom";
 
-import reactLogo from "../assets/loading.svg";
+import loadingLogo from "../assets/loading.svg";
 
 interface PokemonItem {
   name: string;
@@ -54,10 +54,10 @@ const Home = () => {
                 {loading && (
                   <img
                     alt="loading"
-                    src={reactLogo}
+                    src={loadingLogo}
                     className="object-cover text-center py-3"
-                    width={"150px"}
-                    height={"150px"}
+                    width="150px"
+                    height="150px"
                     loading="lazy"
                   />
                 )}
@@ -68,8 +68,8 @@ const Home = () => {
                       index + 1
                     }.svg`}
                     className="object-cover text-center py-2"
-                    width={"150px"}
-                    height={"150px"}
+                    width="150px"
+                    height="150px"
                     loading="lazy"
                   />
                 )}
